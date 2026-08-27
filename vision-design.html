@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth" data-site-language="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Design | Agência Web & Experiências Digitais de Alto Impacto</title>
+
+    <!-- Meta Tags SEO -->
+    <meta name="description" content="Desenvolvimento de sites institucionais de alta performance, landing pages com máxima conversão e sistemas sob medida sem construtores pesados.">
+    <meta name="keywords" content="criação de sites, landing page de alta conversão, agência de desenvolvimento web, ui ux design, vision design, otimização pagespeed">
+    <meta name="author" content="Vision Design">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Redes Sociais & WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Vision Design | Experiências Digitais de Elite">
+    <meta property="og:description" content="Criamos sites ultrarrápidos, exclusivos e projetados estrategicamente para converter visitantes em clientes.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#030712',
+                            card: '#0B1120',
+                            border: '#1E293B',
+                            accent: '#38BDF8',
+                            purple: '#818CF8',
+                            emerald: '#10B981'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 3s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glow: {
+                            '0%': { opacity: '0.4', filter: 'blur(20px)' },
+                            '100%': { opacity: '0.8', filter: 'blur(35px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fontes & Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #030712;
+        }
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        .glass-card {
+            background: rgba(11, 17, 32, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card-hover:hover {
+            transform: translateY(-6px);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.15);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #030712; }
+        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #38BDF8; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .team-card img {
+            filter: saturate(.95);
+            transition: transform .5s ease, filter .5s ease;
+        }
+        .team-card:hover img {
+            transform: scale(1.04);
+            filter: saturate(1.08);
+        }
+        .nav-scrolled {
+            box-shadow: 0 12px 30px rgba(0,0,0,.22);
+            border-bottom-color: rgba(56,189,248,.15);
+        }
+        .glass-card {
+            box-shadow: 0 10px 40px rgba(0,0,0,.08);
+        }
+        ::selection {
+            background: rgba(56,189,248,.35);
+            color: #fff;
+        }
+        .language-option {
+            transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+            .reveal { opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+<body class="text-slate-100 antialiased selection:bg-sky-500 selection:text-slate-950 grid-bg relative overflow-x-hidden">
+
+  <!-- HEADER / NAVBAR -->
+  <header class="sticky top-0 z-50 bg-[#030712]/80 backdrop-blur-xl border-b border-slate-800/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <!-- Substitua o arquivo abaixo pela logo oficial da Vision Design. -->
+        <a href="#" class="flex items-center group" aria-label="Vision Design">
+          <img src="assets/img/logo.png" alt="Vision Design" class="h-12 w-auto max-w-[190px] object-contain group-hover:scale-[1.03] transition-transform duration-300">
+        </a>
+  
+        <!-- Menu Desktop -->
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
+          <a href="#servicos" class="hover:text-sky-400 transition-colors">Serviços</a>
+          <a href="#metodologia" class="hover:text-sky-400 transition-colors">Metodologia</a>
+          <a href="#portfolio" class="hover:text-sky-400 transition-colors">Portfólio</a>
+          <a href="#diferenciais" class="hover:text-sky-400 transition-colors">Diferenciais</a>
+          <a href="#equipe" class="hover:text-sky-400 transition-colors">Equipe</a>
+          <a href="#simulador" class="text-sky-400 font-semibold flex items-center gap-1.5 hover:text-sky-300">
+            <i class="fas fa-calculator text-xs"></i> Simulador
+          </a>
+          <a href="#faq" class="hover:text-sky-400 transition-colors">FAQ</a>
+        </nav>
+  
+        <!-- Redes Sociais & CTA Desktop -->
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="https://www.instagram.com/agencia.visiondesign" target="_blank" rel="noopener" class="text-slate-400 hover:text-sky-400 transition-colors text-lg p-2" title="Instagram @agencia.visiondesign">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://linktr.ee/VisionDesignTCC?utm_source=linktree_profile_share&ltsid=a5195ce0-7b95-49b6-b896-ca14c9a56c0e" target="_blank" rel="noopener" class="text-slate-400 hover:text-sky-400 transition-colors text-lg p-2" title="Linktree Vision Design">
+            <i class="fas fa-link"></i>
+          </a>
+          
+          <div class="relative" id="language-switcher-desktop">
+            <button id="language-toggle-desktop" type="button" aria-haspopup="true" aria-expanded="false" class="inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-slate-700 bg-slate-900/70 text-slate-200 hover:border-sky-500/50 hover:text-sky-300 transition-all text-xs font-bold">
+              <i class="fas fa-globe text-sky-400"></i>
+              <span id="current-language-desktop">PT</span>
+              <i class="fas fa-chevron-down text-[9px]"></i>
+            </button>
+            <div id="language-menu-desktop" class="hidden absolute right-0 mt-2 w-40 rounded-xl border border-slate-800 bg-[#050B17]/95 backdrop-blur-xl shadow-2xl overflow-hidden z-50">
+              <button type="button" data-lang="pt" class="language-option w-full px-4 py-3 text-left text-xs font-semibold text-slate-200 hover:bg-slate-800 hover:text-sky-400">BR</button>
+              <button type="button" data-lang="en" class="language-option w-full px-4 py-3 text-left text-xs font-semibold text-slate-200 hover:bg-slate-800 hover:text-sky-400">US</button>
+              <button type="button" data-lang="es" class="language-option w-full px-4 py-3 text-left text-xs font-semibold text-slate-200 hover:bg-slate-800 hover:text-sky-400">ES</button>
+            </div>
+          </div>
+          
+          <a href="https://wa.me/5519993504451?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Vision%20Design%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." 
+             target="_blank" 
+             rel="noopener"
+             class="relative group overflow-hidden rounded-xl p-[1px] font-bold text-sm">
+            <span class="absolute inset-0 bg-gradient-to-r from-sky-500 via-indigo-500 to-emerald-400 rounded-xl group-hover:opacity-90 transition-opacity"></span>
+            <span class="relative block px-5 py-2.5 rounded-[11px] bg-slate-950 text-white group-hover:bg-transparent group-hover:text-slate-950 transition-all duration-300 flex items-center gap-2">
+              <i class="fab fa-whatsapp text-lg"></i>
+              Fazer Orçamento
+            </span>
+          </a>
+        </div>
+  
+        <!-- Idioma + Menu Mobile -->
+        <div class="flex items-center gap-2 lg:hidden">
+          <div class="relative" id="language-switcher-mobile">
+            <button id="language-toggle-mobile" type="button" aria-haspopup="true" aria-expanded="false" class="inline-flex items-center gap-1.5 px-2.5 py-2 rounded-xl border border-slate-700 bg-slate-900/70 text-slate-200 hover:border-sky-500/50 hover:text-sky-300 transition-all text-xs font-bold">
+              <i class="fas fa-globe text-sky-400"></i>
+              <span id="current-language-mobile">PT</span>
+            </button>
+            <div id="language-menu-mobile" class="hidden absolute right-0 mt-2 w-36 rounded-xl border border-slate-800 bg-[#050B17]/95 backdrop-blur-xl shadow-2xl overflow-hidden z-50">
+              <button type="button" data-lang="pt" class="language-option w-full px-4 py-3 text-left text-xs font-semibold text-slate-200 hover:bg-slate-800 hover:text-sky-400">BR</button>
+              <button type="button" data-lang="en" class="language-option w-full px-4 py-3 text-left text-xs font-semibold text-slate-200 hover:bg-slate-800 hover:text-sky-400">US</button>
+              <button type="button" data-lang="es" class="language-option w-full px-4 py-3 text-left text-xs font-semibold text-slate-200 hover:bg-slate-800 hover:text-sky-400">ES</button>
+            </div>
+          </div>
+          <button id="mobile-menu-btn" aria-label="Abrir Menu" class="text-slate-300 hover:text-white p-2 text-2xl focus:outline-none">
+          <i id="menu-icon" class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Menu Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#030712]/95 border-b border-slate-800 px-6 py-6 space-y-4 text-slate-300 backdrop-blur-2xl">
+      <a href="#servicos" class="mobile-link block py-2 border-b border-slate-800/60 font-medium">Serviços</a>
+      <a href="#metodologia" class="mobile-link block py-2 border-b border-slate-800/60 font-medium">Metodologia</a>
+      <a href="#portfolio" class="mobile-link block py-2 border-b border-slate-800/60 font-medium">Portfólio</a>
+      <a href="#diferenciais" class="mobile-link block py-2 border-b border-slate-800/60 font-medium">Diferenciais</a>
+      <a href="#equipe" class="mobile-link block py-2 border-b border-slate-800/60 font-medium">Equipe</a>
+      <a href="#simulador" class="mobile-link block py-2 border-b border-slate-800/60 font-medium text-sky-400">Simulador de Projeto</a>
+      <a href="#faq" class="mobile-link block py-2 border-b border-slate-800/60 font-medium">Perguntas Frequentes</a>
+      
+      <div class="pt-2 pb-1">
+        <div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Idioma / Language / Idioma</div>
+        <div class="grid grid-cols-3 gap-2">
+          <button type="button" data-lang="pt" class="language-option px-3 py-2 rounded-lg border border-slate-800 bg-slate-900/60 text-xs font-semibold text-slate-200 hover:border-sky-500/40 hover:text-sky-400">BR</button>
+          <button type="button" data-lang="en" class="language-option px-3 py-2 rounded-lg border border-slate-800 bg-slate-900/60 text-xs font-semibold text-slate-200 hover:border-sky-500/40 hover:text-sky-400">US</button>
+          <button type="button" data-lang="es" class="language-option px-3 py-2 rounded-lg border border-slate-800 bg-slate-900/60 text-xs font-semibold text-slate-200 hover:border-sky-500/40 hover:text-sky-400">ES</button>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6 pt-3">
+        <a href="https://www.instagram.com/agencia.visiondesign" target="_blank" rel="noopener" class="text-slate-400 hover:text-sky-400 flex items-center gap-2 text-sm">
+          <i class="fab fa-instagram text-lg"></i> @agencia.visiondesign
+        </a>
+        <a href="https://linktr.ee/VisionDesignTCC?utm_source=linktree_profile_share&ltsid=a5195ce0-7b95-49b6-b896-ca14c9a56c0e" target="_blank" rel="noopener" class="text-slate-400 hover:text-sky-400 flex items-center gap-2 text-sm">
+          <i class="fas fa-link"></i> Linktree
+        </a>
+      </div>
+
+      <a href="https://wa.me/5519993504451?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Vision%20Design%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." 
+         target="_blank" 
+         rel="noopener"
+         class="w-full mt-4 bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold px-5 py-3.5 rounded-xl text-center flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20">
+        <i class="fab fa-whatsapp text-xl"></i>
+        Fazer Orçamento no WhatsApp
+      </a>
+    </div>
+  </header>
+  
+  <!-- HERO SECTION -->
+  <section class="relative pt-12 pb-20 md:pt-24 md:pb-32 overflow-hidden">
+    <!-- Efeitos de Luz de Fundo -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-sky-500/15 blur-[140px] rounded-full pointer-events-none animate-pulse-slow"></div>
+    <div class="absolute top-1/3 right-10 w-[300px] h-[300px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-4xl mx-auto">
+        
+        <!-- Badge Superior -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-8 shadow-inner backdrop-blur-md">
+          <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-ping"></span>
+          Agência de Elite • Sites de Alta Conversão & Performance
+        </div>
+  
+        <!-- Título Principal -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] mb-8">
+          Sua empresa merece um site que <span class="text-white">converte atenção em valor</span> <br class="hidden sm:inline" />
+          <span class="bg-gradient-to-r from-sky-400 via-indigo-300 to-sky-200 bg-clip-text text-transparent">
+            com padrão de alto nível.
+          </span>
+        </h1>
+  
+        <p class="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed mb-10 max-w-3xl mx-auto">
+          Desenvolvemos websites institucionais, landing pages estratégicas e sistemas sob medida com design exclusivo, velocidade máxima e foco total em transformar acessos em novos clientes.
+        </p>
+  
+        <!-- Botões de Ação Hero -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <a href="https://wa.me/5519993504451?text=Ol%C3%A1!%20Quero%20fazer%20um%20projeto%20com%20a%20Vision%20Design.%20Como%20funciona?" 
+             target="_blank" 
+             rel="noopener"
+             class="w-full sm:w-auto bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold px-8 py-4 rounded-xl transition-all transform hover:-translate-y-1 shadow-xl shadow-sky-500/25 flex items-center justify-center gap-3 text-base">
+            <i class="fab fa-whatsapp text-2xl"></i>
+            Iniciar Projeto no WhatsApp
+          </a>
+          
+          <a href="#portfolio" 
+             class="w-full sm:w-auto glass-card hover:bg-slate-800/80 text-slate-200 border border-slate-700 font-bold px-8 py-4 rounded-xl transition-all flex items-center justify-center gap-2 text-base">
+            <i class="fas fa-arrow-down text-sky-400"></i>
+            Conhecer Projetos
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Hero Visual / Pilares -->
+      <div class="relative max-w-5xl mx-auto mt-6 rounded-3xl p-2 sm:p-4 glass-card border border-slate-800 shadow-2xl animate-float reveal">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 py-3 border-b border-slate-800/80 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+          </div>
+          <div class="bg-slate-900/90 text-xs text-slate-400 px-4 py-2 rounded-lg font-mono border border-slate-800">
+            Vision Design • Web & Experiências Digitais
+          </div>
+          <div class="text-xs text-emerald-400 font-semibold flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Projeto sob medida
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-2 sm:p-4">
+          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80">
+            <i class="fas fa-code text-sky-400 text-xl"></i>
+            <div class="font-bold text-white mt-4">Código próprio</div>
+            <div class="text-xs text-slate-400 mt-1">Desenvolvimento sob medida e sem dependência de templates genéricos.</div>
+          </div>
+          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80">
+            <i class="fas fa-layer-group text-indigo-400 text-xl"></i>
+            <div class="font-bold text-white mt-4">Design exclusivo</div>
+            <div class="text-xs text-slate-400 mt-1">Interfaces pensadas para a identidade e os objetivos do seu negócio.</div>
+          </div>
+          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80">
+            <i class="fas fa-gauge-high text-emerald-400 text-xl"></i>
+            <div class="font-bold text-white mt-4">Performance</div>
+            <div class="text-xs text-slate-400 mt-1">Arquitetura enxuta, responsiva e preparada para uma experiência rápida.</div>
+          </div>
+          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80">
+            <i class="fab fa-whatsapp text-sky-400 text-xl"></i>
+            <div class="font-bold text-white mt-4">Atendimento direto</div>
+            <div class="text-xs text-slate-400 mt-1">Contato simples com a equipe para alinhar dúvidas, escopo e próximos passos.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE SERVIÇOS DE ELITE -->
+  <section id="servicos" class="py-24 bg-[#050B17] border-t border-slate-800/80 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-bold text-sky-400 uppercase tracking-widest mb-3">Soluções Especializadas</h2>
+        <p class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+          Engenharia Web & Design Estratégico
+        </p>
+        <p class="mt-4 text-slate-400 text-base sm:text-lg">
+          Tudo o que sua empresa precisa para se destacar no ambiente digital e dominar o seu nicho.
+        </p>
+      </div>
+  
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Serviço 1 -->
+        <div class="glass-card glass-card-hover rounded-2xl p-8 relative group flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 text-2xl mb-6 group-hover:bg-sky-500 group-hover:text-slate-950 transition-all duration-300">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-3">Criação de Sites Institucionais</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Plataformas corporativas modernas, projetadas com autoridade de marca, navegação intuitiva e otimização total para SEO orgânico no Google.
+            </p>
+            <ul class="text-xs text-slate-300 space-y-2 mb-6">
+              <li class="flex items-center gap-2"><i class="fas fa-check text-sky-400"></i> SEO On-Page Estruturado</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-sky-400"></i> Painel de Gestão Fácil</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-sky-400"></i> Domínio & Hospedagem Próprios</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/5519993504451?text=Ol%C3%A1!%20Tenho%20interesse%20em%20Cria%C3%A7%C3%A3o%20de%20Site%20Institucional." target="_blank" rel="noopener" class="text-sky-400 font-bold text-sm flex items-center gap-2 group-hover:text-sky-300">
+            Solicitar Proposta <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Serviço 2 -->
+        <div class="glass-card glass-card-hover rounded-2xl p-8 relative group flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-2xl mb-6 group-hover:bg-indigo-500 group-hover:text-slate-950 transition-all duration-300">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-3">Landing Pages de Alta Conversão</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Páginas de vendas diretas focadas em campanhas de tráfego pago (Google Ads e Meta Ads). Copywriting persuasivo e gatilhos mentais.
+            </p>
+            <ul class="text-xs text-slate-300 space-y-2 mb-6">
+              <li class="flex items-center gap-2"><i class="fas fa-check text-indigo-400"></i> Foco Total em Geração de Leads</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-indigo-400"></i> Carregamento Instantâneo</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-indigo-400"></i> Integração com WhatsApp e CRM</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/5519993504451?text=Ol%C3%A1!%20Tenho%20interesse%20em%20uma%20Landing%20Page%20de%20Alta%20Convers%C3%A3o." target="_blank" rel="noopener" class="text-indigo-400 font-bold text-sm flex items-center gap-2 group-hover:text-indigo-300">
+            Solicitar Proposta <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Serviço 3 -->
+        <div class="glass-card glass-card-hover rounded-2xl p-8 relative group flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl mb-6 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-all duration-300">
+              <i class="fas fa-cubes"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-3">Sistemas & Plataformas Web</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Desenvolvimento de aplicações sob medida: portais para clientes, sistemas de agendamento, dashboards administrativos e automações.
+            </p>
+            <ul class="text-xs text-slate-300 space-y-2 mb-6">
+              <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-400"></i> Arquitetura Escalável</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-400"></i> Banco de Dados Seguro</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-400"></i> Autenticação e Perfis de Usuário</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/5519993504451?text=Ol%C3%A1!%20Tenho%20interesse%20em%20Sistemas%20e%20Aplica%C3%A7%C3%B5es%20Sob%20Medida." target="_blank" rel="noopener" class="text-emerald-400 font-bold text-sm flex items-center gap-2 group-hover:text-emerald-300">
+            Solicitar Proposta <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Serviço 4 -->
+        <div class="glass-card glass-card-hover rounded-2xl p-8 relative group flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-2xl mb-6 group-hover:bg-purple-500 group-hover:text-slate-950 transition-all duration-300">
+              <i class="fas fa-pen-nib"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-3">UI/UX & Redesign Premium</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Reformulação completa de sites antigos e desatualizados. Criamos interfaces sofisticadas alinhadas às últimas tendências internacionais.
+            </p>
+          </div>
+          <a href="https://wa.me/5519993504451?text=Ol%C3%A1!%20Quero%20fazer%20o%20Redesign%20do%20meu%20site%20atual." target="_blank" rel="noopener" class="text-purple-400 font-bold text-sm flex items-center gap-2">
+            Solicitar Redesign <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Serviço 5 -->
+        <div class="glass-card glass-card-hover rounded-2xl p-8 relative group flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl mb-6 group-hover:bg-amber-500 group-hover:text-slate-950 transition-all duration-300">
+              <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-3">Otimização PageSpeed 100</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Aceleramos sites lentos que perdem vendas. Limpeza de código, compressão de mídia de ponta e otimização de servidor.
+            </p>
+          </div>
+          <a href="https://wa.me/5519993504451?text=Ol%C3%A1!%20Quero%20otimizar%20a%20velocidade%20do%20meu%20site." target="_blank" rel="noopener" class="text-amber-400 font-bold text-sm flex items-center gap-2">
+            Acelerar Meu Site <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Serviço 6 -->
+        <div class="glass-card glass-card-hover rounded-2xl p-8 relative group flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl mb-6 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all duration-300">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-3">Integrações Automáticas</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Conexão com WhatsApp Web, formulários inteligentes, RD Station, HubSpot, gateways de pagamento e ferramentas de email marketing.
+            </p>
+          </div>
+          <a href="https://wa.me/5519993504451?text=Ol%C3%A1!%20Gostaria%20de%20integrar%20meu%20site%20com%20ferramentas%20externas." target="_blank" rel="noopener" class="text-cyan-400 font-bold text-sm flex items-center gap-2">
+            Ver Integrações <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO METODOLOGIA (COMO FUNCIONA) -->
+  <section id="metodologia" class="py-24 bg-[#030712] border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-bold text-sky-400 uppercase tracking-widest mb-3">Processo Transparente</h2>
+        <p class="text-3xl sm:text-4xl font-black text-white tracking-tight">
+          Como criamos seu projeto em 4 passos simples
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="glass-card rounded-2xl p-6 relative">
+          <div class="text-4xl font-black text-sky-500/30 mb-4">01</div>
+          <h3 class="text-lg font-bold text-white mb-2">Diagnóstico & Estratégia</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Entendemos seu público-alvo, metas comerciais e concorrentes para criar um mapa de arquitetura exclusivo.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 relative">
+          <div class="text-4xl font-black text-indigo-500/30 mb-4">02</div>
+          <h3 class="text-lg font-bold text-white mb-2">Design Prototipado</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Desenhamos a interface visual em alta fidelidade. Você aprova as telas antes de escrevermos qualquer linha de código.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 relative">
+          <div class="text-4xl font-black text-emerald-500/30 mb-4">03</div>
+          <h3 class="text-lg font-bold text-white mb-2">Desenvolvimento & SEO</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Programação limpa, otimização de velocidade, implementação de segurança SSL e testes de responsividade em celulares.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 relative">
+          <div class="text-4xl font-black text-purple-500/30 mb-4">04</div>
+          <h3 class="text-lg font-bold text-white mb-2">Lançamento & Suporte</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Publicação do site no seu domínio corporativo e acompanhamento técnico contínuo para garantir estabilidade total.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SEÇÃO INTERATIVA: SIMULADOR DE ORÇAMENTO -->
+  <section id="simulador" class="py-24 bg-[#050B17] border-t border-slate-800/80 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="px-3 py-1 rounded-full bg-sky-500/10 text-sky-400 text-xs font-bold uppercase tracking-widest border border-sky-500/20">
+          Ferramenta Interativa
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mt-4 mb-3">
+          Simule o Investimento do Seu Projeto
+        </h2>
+        <p class="text-slate-400 text-sm">
+          Selecione as opções desejadas abaixo e receba uma estimativa instantânea direto no seu WhatsApp.
+        </p>
+      </div>
+
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-2xl">
+        
+        <!-- Passo 1: Tipo de Projeto -->
+        <div class="mb-8">
+          <label class="block text-sm font-bold text-white uppercase tracking-wider mb-4">
+            1. Qual o tipo de projeto você precisa?
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <label class="calc-type border border-slate-800 rounded-xl p-4 cursor-pointer hover:border-sky-500/60 transition-all flex flex-col justify-between bg-slate-900/40">
+              <input type="radio" name="project_type" value="Landing Page" data-price="1200" class="sr-only" checked>
+              <div>
+                <div class="font-bold text-white mb-1">Landing Page</div>
+                <div class="text-xs text-slate-400">Página única focada em vendas de produto ou serviço.</div>
+              </div>
+              <div class="text-xs font-bold text-sky-400 mt-3">A partir de R$ 1.200</div>
+            </label>
+
+            <label class="calc-type border border-slate-800 rounded-xl p-4 cursor-pointer hover:border-sky-500/60 transition-all flex flex-col justify-between bg-slate-900/40">
+              <input type="radio" name="project_type" value="Site Institucional" data-price="2500" class="sr-only">
+              <div>
+                <div class="font-bold text-white mb-1">Site Institucional</div>
+                <div class="text-xs text-slate-400">Múltiplas páginas corporativas completas para sua empresa.</div>
+              </div>
+              <div class="text-xs font-bold text-sky-400 mt-3">A partir de R$ 2.500</div>
+            </label>
+
+            <label class="calc-type border border-slate-800 rounded-xl p-4 cursor-pointer hover:border-sky-500/60 transition-all flex flex-col justify-between bg-slate-900/40">
+              <input type="radio" name="project_type" value="Sistema Web / App" data-price="4500" class="sr-only">
+              <div>
+                <div class="font-bold text-white mb-1">Sistema Web / App</div>
+                <div class="text-xs text-slate-400">Plataforma customizada com banco de dados e painel.</div>
+              </div>
+              <div class="text-xs font-bold text-sky-400 mt-3">A partir de R$ 4.500</div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Passo 2: Recursos Adicionais -->
+        <div class="mb-8">
+          <label class="block text-sm font-bold text-white uppercase tracking-wider mb-4">
+            2. Recursos extras que você deseja incluir:
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <label class="calc-addon border border-slate-800 rounded-xl p-3.5 cursor-pointer hover:border-sky-500/40 transition-all flex items-center justify-between bg-slate-900/40">
+              <div class="flex items-center gap-3">
+                <input type="checkbox" data-name="SEO Avançado Google" data-price="400" class="w-4 h-4 rounded accent-sky-500">
+                <span class="text-xs font-semibold text-slate-300">SEO Avançado para Google</span>
+              </div>
+              <span class="text-xs font-bold text-slate-400">+R$ 400</span>
+            </label>
+
+            <label class="calc-addon border border-slate-800 rounded-xl p-3.5 cursor-pointer hover:border-sky-500/40 transition-all flex items-center justify-between bg-slate-900/40">
+              <div class="flex items-center gap-3">
+                <input type="checkbox" data-name="Integração WhatsApp Inteligente" data-price="250" class="w-4 h-4 rounded accent-sky-500" checked>
+                <span class="text-xs font-semibold text-slate-300">Integração WhatsApp Direta</span>
+              </div>
+              <span class="text-xs font-bold text-slate-400">+R$ 250</span>
+            </label>
+
+            <label class="calc-addon border border-slate-800 rounded-xl p-3.5 cursor-pointer hover:border-sky-500/40 transition-all flex items-center justify-between bg-slate-900/40">
+              <div class="flex items-center gap-3">
+                <input type="checkbox" data-name="Design UI/UX Exclusivo" data-price="500" class="w-4 h-4 rounded accent-sky-500" checked>
+                <span class="text-xs font-semibold text-slate-300">Design 100% Exclusivo</span>
+              </div>
+              <span class="text-xs font-bold text-slate-400">+R$ 500</span>
+            </label>
+
+            <label class="calc-addon border border-slate-800 rounded-xl p-3.5 cursor-pointer hover:border-sky-500/40 transition-all flex items-center justify-between bg-slate-900/40">
+              <div class="flex items-center gap-3">
+                <input type="checkbox" data-name="Otimização Extrema PageSpeed" data-price="350" class="w-4 h-4 rounded accent-sky-500" checked>
+                <span class="text-xs font-semibold text-slate-300">Garantia PageSpeed 95+</span>
+              </div>
+              <span class="text-xs font-bold text-slate-400">+R$ 350</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Resumo & Botão Final -->
+        <div class="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <div class="text-xs text-slate-400 font-medium">Investimento Estimado:</div>
+            <div id="total-price" class="text-3xl sm:text-4xl font-black text-sky-400">R$ 2.300</div>
+          </div>
+
+          <button id="send-simulation-btn" 
+                  class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-8 py-4 rounded-xl transition-all transform hover:scale-105 shadow-xl shadow-emerald-500/20 flex items-center justify-center gap-3">
+            <i class="fab fa-whatsapp text-xl"></i>
+            Enviar Proposta no WhatsApp
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  
+  <!-- SEÇÃO DE PORTFÓLIO DE PROJETOS -->
+  <section id="portfolio" class="py-24 bg-[#030712] border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div>
+          <h2 class="text-xs font-bold text-sky-400 uppercase tracking-widest mb-3">Cases de Sucesso</h2>
+          <p class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+            Nossos Projetos em Destaque
+          </p>
+        </div>
+        <p class="text-slate-400 max-w-md mt-4 md:mt-0 text-sm">
+          Cada projeto é desenvolvido com identidade visual única, performance extrema e foco absoluto em conversão.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Projeto 1 -->
+        <div class="glass-card rounded-2xl overflow-hidden group hover:border-sky-500/50 transition-all duration-300">
+          <div class="h-64 sm:h-72 bg-slate-900 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
+                 alt="Plataforma SaaS & Dashboard Admin" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-slate-950/50 group-hover:bg-slate-950/20 transition-all"></div>
+            <span class="absolute top-4 left-4 bg-slate-950/80 backdrop-blur-md border border-slate-700 text-sky-400 font-mono text-xs px-3 py-1 rounded-full font-bold">
+              0.4s Loading
+            </span>
+          </div>
+          <div class="p-8">
+            <div class="flex items-center gap-2 text-xs font-bold text-sky-400 mb-2">
+              <span>PLATAFORMA SAAS</span> • <span>DASHBOARD ADMIN</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">FinTech Analytics & Dashboard</h3>
+            <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+              Interface minimalista para gestão financeira em tempo real com relatórios interativos e alto desempenho em dados.
+            </p>
+            <div class="flex items-center justify-between pt-4 border-t border-slate-800/80">
+              <span class="text-xs text-slate-500 font-mono">Tech Stack: HTML5 / Tailwind / JS</span>
+              <a href="https://wa.me/5519993504451?text=Ol%C3%A1!%20Gostei%20do%20projeto%20Fintech%20do%20seu%20portf%C3%B3lio." target="_blank" rel="noopener" class="text-sky-400 hover:text-sky-300 text-xs font-bold flex items-center gap-1">
+                Ver Detalhes <i class="fas fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 2 -->
+        <div class="glass-card rounded-2xl overflow-hidden group hover:border-sky-500/50 transition-all duration-300">
+          <div class="h-64 sm:h-72 bg-slate-900 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" 
+                 alt="Portal Corporativo de Negócios" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-slate-950/50 group-hover:bg-slate-950/20 transition-all"></div>
+            <span class="absolute top-4 left-4 bg-slate-950/80 backdrop-blur-md border border-slate-700 text-emerald-400 font-mono text-xs px-3 py-1 rounded-full font-bold">
+              +210% em Conversão
+            </span>
+          </div>
+          <div class="p-8">
+            <div class="flex items-center gap-2 text-xs font-bold text-indigo-400 mb-2">
+              <span>SITE INSTITUCIONAL</span> • <span>RENOVADO</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">Portal Corporativo Global</h3>
+            <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+              Redesign estratégico focado em posicionar a empresa como autoridade máxima no setor corporativo.
+            </p>
+            <div class="flex items-center justify-between pt-4 border-t border-slate-800/80">
+              <span class="text-xs text-slate-500 font-mono">Tech Stack: SEO Premium / UI UX</span>
+              <a href="https://wa.me/5519993504451?text=Ol%C3%A1!%20Gostei%20do%20Portal%20Corporativo%20do%20seu%20portf%C3%B3lio." target="_blank" rel="noopener" class="text-indigo-400 hover:text-indigo-300 text-xs font-bold flex items-center gap-1">
+                Ver Detalhes <i class="fas fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  
+  <!-- SEÇÃO DE DIFERENCIAIS (COMPARATIVO) -->
+  <section id="diferenciais" class="py-24 bg-[#050B17] border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-bold text-sky-400 uppercase tracking-widest mb-3">Por Que a Vision Design?</h2>
+        <p class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+          A diferença entre um site comum e uma máquina de vendas
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        
+        <!-- Outras Agências / Criadores Lentos -->
+        <div class="glass-card rounded-2xl p-8 border border-red-500/20 bg-red-950/10">
+          <div class="text-red-400 font-bold text-lg mb-6 flex items-center gap-2">
+            <i class="fas fa-times-circle text-xl"></i>
+            Outras Agências & Criadores Genéricos
+          </div>
+          <ul class="space-y-4 text-slate-400 text-sm">
+            <li class="flex items-start gap-3">
+              <i class="fas fa-times text-red-400 mt-1"></i>
+              <span><strong>Usam construtores lentos</strong> que travam em celulares e perdem clientes.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-times text-red-400 mt-1"></i>
+              <span><strong>Mensalidades abusivas</strong> e presas a plataformas de terceiros.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-times text-red-400 mt-1"></i>
+              <span><strong>Templates copiados</strong> que não transmitem autoridade de marca.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-times text-red-400 mt-1"></i>
+              <span><strong>Suporte demorado</strong> através de chamados engessados.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Vision Design -->
+        <div class="glass-card rounded-2xl p-8 border border-sky-500/40 bg-sky-950/10 relative overflow-hidden">
+          <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-sky-500/20 rounded-full blur-3xl"></div>
+          
+          <div class="text-sky-400 font-bold text-lg mb-6 flex items-center gap-2">
+            <i class="fas fa-check-circle text-xl text-sky-400"></i>
+            Padrão de Excelência Vision Design
+          </div>
+          
+          <ul class="space-y-4 text-slate-200 text-sm relative z-10">
+            <li class="flex items-start gap-3">
+              <i class="fas fa-check text-sky-400 mt-1"></i>
+              <span><strong>Código 100% puro e otimizado:</strong> carregamento em menos de 1 segundo.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-check text-sky-400 mt-1"></i>
+              <span><strong>O site é 100% seu:</strong> sem mensalidades ocultas ou taxas recorrentes obrigatórias.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-check text-sky-400 mt-1"></i>
+              <span><strong>Design Exclusivo UI/UX:</strong> sob medida para a conversão do seu nicho.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-check text-sky-400 mt-1"></i>
+              <span><strong>Atendimento direto via WhatsApp:</strong> rápido, prático e personalizado.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- SEÇÃO DE EQUIPE -->
+  <section id="equipe" class="py-24 bg-[#030712] border-t border-slate-800/80 relative overflow-hidden">
+    <div class="absolute top-0 left-1/4 w-72 h-72 bg-sky-500/10 blur-[110px] rounded-full pointer-events-none"></div>
+    <div class="absolute bottom-0 right-1/4 w-72 h-72 bg-indigo-500/10 blur-[110px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Quem faz acontecer</span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mt-3">
+          Nossa <span class="bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent">Equipe</span>
+        </h2>
+        <p class="mt-4 text-slate-400 text-base sm:text-lg">
+          Uma equipe enxuta, multidisciplinar e focada em transformar estratégia, design e tecnologia em experiências digitais de alto nível.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <article class="team-card glass-card glass-card-hover rounded-3xl p-8 text-center reveal">
+          <div class="mx-auto w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-sky-400 to-indigo-500 shadow-xl shadow-sky-500/10 mb-6">
+            <img src="assets/img/team/Henry.jpg" alt="Henry - Design e Desenvolvimento" class="w-full h-full rounded-full object-cover">
+          </div>
+          <h3 class="text-2xl font-bold text-white">Henry</h3>
+          <p class="text-sky-400 font-semibold mt-1">Design & Desenvolvimento</p>
+          <p class="text-slate-400 text-sm leading-relaxed mt-4">
+            Atua na criação visual, interfaces e desenvolvimento de experiências digitais com foco em identidade e usabilidade.
+          </p>
+        </article>
+
+        <article class="team-card glass-card glass-card-hover rounded-3xl p-8 text-center reveal">
+          <div class="mx-auto w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-indigo-400 to-purple-500 shadow-xl shadow-indigo-500/10 mb-6">
+            <img src="assets/img/team/joao-roberto.jpeg" alt="João Roberto - Sistemas e Web" class="w-full h-full rounded-full object-cover">
+          </div>
+          <h3 class="text-2xl font-bold text-white">João Roberto</h3>
+          <p class="text-indigo-400 font-semibold mt-1">Sistemas & Web</p>
+          <p class="text-slate-400 text-sm leading-relaxed mt-4">
+            Focado em desenvolvimento web, estrutura de sistemas e soluções funcionais para transformar ideias em produtos digitais.
+          </p>
+        </article>
+
+        <article class="team-card glass-card glass-card-hover rounded-3xl p-8 text-center reveal">
+          <div class="mx-auto w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-emerald-400 to-sky-500 shadow-xl shadow-emerald-500/10 mb-6">
+            <img src="assets/img/team/Nicolas.jpg" alt="Nicolas - Administração e Financeiro" class="w-full h-full rounded-full object-cover">
+          </div>
+          <h3 class="text-2xl font-bold text-white">Nicolas</h3>
+          <p class="text-emerald-400 font-semibold mt-1">ADM & Financeiro</p>
+          <p class="text-slate-400 text-sm leading-relaxed mt-4">
+            Cuida da organização, gestão e planejamento financeiro para manter cada projeto sustentável e bem estruturado.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE DEPOIMENTOS (PROVA SOCIAL) -->
+  <section class="py-24 bg-[#030712] border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-bold text-sky-400 uppercase tracking-widest mb-3">Aprovação Garantida</h2>
+        <p class="text-3xl sm:text-4xl font-black text-white tracking-tight">
+          O que nossos parceiros dizem
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 gap-1 text-sm mb-4">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="text-slate-300 text-sm italic mb-6 leading-relaxed">
+              "O site novo mudou o patamar da nossa empresa. O carregamento é instantâneo e nossos clientes elogiam muito a facilidade de navegação no celular!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-800/80">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-sky-400 to-indigo-500 flex items-center justify-center font-bold text-slate-950 text-sm">
+              RC
+            </div>
+            <div>
+              <div class="text-white text-sm font-bold">Rodrigo Costa</div>
+              <div class="text-xs text-slate-500">Diretor de Operações</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 gap-1 text-sm mb-4">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="text-slate-300 text-sm italic mb-6 leading-relaxed">
+              "A landing page desenvolvida pela Vision Design triplicou nossa taxa de conversão em anúncios do Google Ads no primeiro mês."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-800/80">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-400 to-purple-500 flex items-center justify-center font-bold text-slate-950 text-sm">
+              MF
+            </div>
+            <div>
+              <div class="text-white text-sm font-bold">Mariana Fernandes</div>
+              <div class="text-xs text-slate-500">CMO & Growth Lead</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 gap-1 text-sm mb-4">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="text-slate-300 text-sm italic mb-6 leading-relaxed">
+              "Atendimento espetacular. Entregaram antes do prazo e deram todo o suporte necessário para integrar ao nosso WhatsApp!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-800/80">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-400 to-sky-500 flex items-center justify-center font-bold text-slate-950 text-sm">
+              AL
+            </div>
+            <div>
+              <div class="text-white text-sm font-bold">André Lima</div>
+              <div class="text-xs text-slate-500">Fundador de Startup</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE FAQ (PERGUNTAS FREQUENTES) -->
+  <section id="faq" class="py-24 bg-[#050B17] border-t border-slate-800/80">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16">
+        <h2 class="text-xs font-bold text-sky-400 uppercase tracking-widest mb-3">Tire Suas Dúvidas</h2>
+        <p class="text-3xl sm:text-4xl font-black text-white tracking-tight">
+          Perguntas Frequentes
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        
+        <div class="glass-card rounded-2xl overflow-hidden transition-colors border border-slate-800">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between font-bold text-white hover:text-sky-400 transition-colors focus:outline-none">
+            <span class="text-base sm:text-lg">Qual o prazo de entrega de um projeto?</span>
+            <i class="fas fa-chevron-down text-sky-400 transition-transform duration-300 ml-4"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-slate-800/60 pt-4">
+            Landing pages são entregues em média entre 5 a 10 dias úteis. Sites institucionais completos levam de 10 a 20 dias úteis, dependendo do volume de conteúdo.
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl overflow-hidden transition-colors border border-slate-800">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between font-bold text-white hover:text-sky-400 transition-colors focus:outline-none">
+            <span class="text-base sm:text-lg">O site é otimizado para celulares?</span>
+            <i class="fas fa-chevron-down text-sky-400 transition-transform duration-300 ml-4"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-slate-800/60 pt-4">
+            Com certeza! Todos os nossos projetos são desenvolvidos sob a filosofia Mobile-First, garantindo carregamento rápido e usabilidade perfeita em smartphones e tablets.
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl overflow-hidden transition-colors border border-slate-800">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between font-bold text-white hover:text-sky-400 transition-colors focus:outline-none">
+            <span class="text-base sm:text-lg">Terei que pagar mensalidade?</span>
+            <i class="fas fa-chevron-down text-sky-400 transition-transform duration-300 ml-4"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-slate-800/60 pt-4">
+            Não! A Vision Design não cobra taxas mensais de uso. Você será o único proprietário do seu código e arcará apenas com a sua hospedagem e domínio (.com.br).
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl overflow-hidden transition-colors border border-slate-800">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between font-bold text-white hover:text-sky-400 transition-colors focus:outline-none">
+            <span class="text-base sm:text-lg">Como funciona o pagamento?</span>
+            <i class="fas fa-chevron-down text-sky-400 transition-transform duration-300 ml-4"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-slate-800/60 pt-4">
+            Trabalhamos com entrada no início do projeto e o restante após a aprovação final do site antes do lançamento oficial. Facilitamos no Pix e cartão de crédito.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION FINAL -->
+  <section class="py-20 bg-gradient-to-b from-[#050B17] to-[#030712] border-t border-slate-800/80 relative overflow-hidden">
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-sky-500/15 blur-[120px] rounded-full pointer-events-none"></div>
+  
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-6">
+        <i class="fas fa-fire"></i> Vagas Limitadas Para Este Mês
+      </div>
+
+      <h2 class="text-4xl sm:text-6xl font-black text-white tracking-tight mb-6 leading-tight">
+        Pronto para transformar sua presença digital em uma <span class="bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent">máquina de vendas?</span>
+      </h2>
+      <p class="text-slate-300 text-lg mb-10 max-w-2xl mx-auto">
+        Fale diretamente com nossa equipe no WhatsApp, tire suas dúvidas e receba um orçamento personalizado sem compromisso.
+      </p>
+      
+      <a href="https://wa.me/5519993504451?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Vision%20Design%20e%20quero%20solicitar%20um%20or%C3%A7amento%20para%20o%20meu%20projeto." 
+         target="_blank" 
+         rel="noopener"
+         class="inline-flex items-center gap-3 bg-sky-500 hover:bg-sky-400 text-slate-950 font-black px-10 py-5 rounded-2xl transition-all transform hover:scale-105 shadow-2xl shadow-sky-500/30 text-lg">
+        <i class="fab fa-whatsapp text-2xl"></i>
+        Falar com a Vision Design no WhatsApp
+      </a>
+    </div>
+  </section>
+  
+  <!-- RODAPÉ (FOOTER) -->
+  <footer class="bg-[#02050D] border-t border-slate-800/80 py-12 text-slate-400 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-start items-center justify-between gap-10">
+        
+        <!-- Logo Grande & Copyright -->
+        <div class="text-center md:text-left md:max-w-sm">
+          <!-- Use a sua logo oficial aqui; pode trocar o caminho por outro arquivo se preferir. -->
+          <a href="#" class="inline-flex items-center justify-center md:justify-start group" aria-label="Vision Design">
+            <img src="assets/img/logo.png" alt="Vision Design" class="w-auto h-28 sm:h-36 max-w-[320px] object-contain group-hover:scale-[1.02] transition-transform duration-300">
+          </a>
+          <p class="text-slate-500 text-xs mt-4">
+            © 2026 Vision Design. Todos os direitos reservados.
+          </p>
+          <div class="flex items-center justify-center md:justify-start gap-2 mt-2 text-xs text-emerald-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Sistemas Operacionais & Prontos para Atendimento
+          </div>
+        </div>
+  
+        <!-- Links Rápidos -->
+        <div class="flex flex-wrap justify-center gap-6 text-xs font-semibold text-slate-400">
+          <a href="#servicos" class="hover:text-sky-400 transition-colors">Serviços</a>
+          <a href="#metodologia" class="hover:text-sky-400 transition-colors">Metodologia</a>
+          <a href="#portfolio" class="hover:text-sky-400 transition-colors">Portfólio</a>
+          <a href="#diferenciais" class="hover:text-sky-400 transition-colors">Diferenciais</a>
+          <a href="#equipe" class="hover:text-sky-400 transition-colors">Equipe</a>
+          <a href="#simulador" class="hover:text-sky-400 transition-colors">Simulador</a>
+          <a href="#faq" class="hover:text-sky-400 transition-colors">FAQ</a>
+        </div>
+  
+        <!-- Redes e Contatos Corrigidos -->
+        <div class="flex items-center gap-4 text-slate-400">
+          <a href="https://wa.me/5519993504451" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp 19 99350-4451" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-sky-400 hover:border-sky-500/50 transition-all">
+            <i class="fab fa-whatsapp text-lg"></i>
+          </a>
+          <a href="https://www.instagram.com/agencia.visiondesign" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram @agencia.visiondesign" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-sky-400 hover:border-sky-500/50 transition-all">
+            <i class="fab fa-instagram text-lg"></i>
+          </a>
+          <a href="https://linktr.ee/VisionDesignTCC?utm_source=linktree_profile_share&ltsid=a5195ce0-7b95-49b6-b896-ca14c9a56c0e" target="_blank" rel="noopener" aria-label="Linktree" title="Linktree Vision Design" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-sky-400 hover:border-sky-500/50 transition-all">
+            <i class="fas fa-link text-lg"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+  <a href="https://wa.me/5519993504451?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Vision%20Design%20e%20gostaria%20de%20atendimento." 
+     target="_blank" 
+     rel="noopener"
+     aria-label="Atendimento no WhatsApp"
+     class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-500/40 transition-all transform hover:scale-110 group">
+    <i class="fab fa-whatsapp text-3xl"></i>
+    <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-sky-400 border-2 border-slate-950 animate-ping"></span>
+  </a>
+
+  <!-- BOTÃO VOLTAR AO TOPO -->
+  <button id="back-to-top" aria-label="Voltar ao topo" class="hidden fixed bottom-6 left-6 z-50 bg-slate-900/90 border border-slate-800 text-slate-300 hover:text-sky-400 w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-md transition-all">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- SISTEMA MULTILÍNGUE (PT / EN / ES) -->
+  <script>
+    const translations = {
+      en: {
+        'Vision Design | Agência Web & Experiências Digitais de Alto Impacto':'Vision Design | Web Agency & High-Impact Digital Experiences',
+        'Serviços':'Services','Metodologia':'Methodology','Portfólio':'Portfolio','Diferenciais':'Why Us','Equipe':'Team','Simulador':'Estimator','Simulador de Projeto':'Project Estimator','FAQ':'FAQ','Fazer Orçamento':'Get a Quote','Perguntas Frequentes':'Frequently Asked Questions','Fazer Orçamento no WhatsApp':'Get a Quote on WhatsApp',
+        'Agência de Elite • Sites de Alta Conversão & Performance':'Elite Agency • High-Converting & High-Performance Websites',
+        'Sua empresa merece um site que':'Your business deserves a website that',
+        'converte atenção em valor':'turns attention into value',
+        'com padrão de alto nível.':'with a world-class standard.',
+        'Desenvolvemos websites institucionais, landing pages estratégicas e sistemas sob medida com design exclusivo, velocidade máxima e foco total em transformar acessos em novos clientes.':'We build corporate websites, strategic landing pages and custom systems with exclusive design, maximum speed and a strong focus on turning visitors into customers.',
+        'Iniciar Projeto no WhatsApp':'Start a Project on WhatsApp','Conhecer Projetos':'Explore Our Projects','Vision Design • Web & Experiências Digitais':'Vision Design • Web & Digital Experiences','Projeto sob medida':'Custom-built projects','Código próprio':'Custom code','Desenvolvimento sob medida e sem dependência de templates genéricos.':'Custom development without relying on generic templates.','Design exclusivo':'Exclusive design','Interfaces pensadas para a identidade e os objetivos do seu negócio.':'Interfaces designed around your brand identity and business goals.','Performance':'Performance','Arquitetura enxuta, responsiva e preparada para uma experiência rápida.':'Lean, responsive architecture built for a fast experience.','Atendimento direto':'Direct support','Contato simples com a equipe para alinhar dúvidas, escopo e próximos passos.':'Direct contact with the team to align questions, scope and next steps.',
+        'Soluções Especializadas':'Specialized Solutions','Engenharia Web & Design Estratégico':'Web Engineering & Strategic Design','Tudo o que sua empresa precisa para se destacar no ambiente digital e dominar o seu nicho.':'Everything your business needs to stand out digitally and lead its niche.',
+        'Criação de Sites Institucionais':'Corporate Website Development','Plataformas corporativas modernas, projetadas com autoridade de marca, navegação intuitiva e otimização total para SEO orgânico no Google.':'Modern corporate platforms designed for brand authority, intuitive navigation and strong organic SEO performance on Google.','SEO On-Page Estruturado':'Structured On-Page SEO','Painel de Gestão Fácil':'Easy Management Panel','Domínio & Hospedagem Próprios':'Own Domain & Hosting','Solicitar Proposta':'Request a Proposal',
+        'Landing Pages de Alta Conversão':'High-Converting Landing Pages','Páginas de vendas diretas focadas em campanhas de tráfego pago (Google Ads e Meta Ads). Copywriting persuasivo e gatilhos mentais.':'Direct-response sales pages focused on paid traffic campaigns (Google Ads and Meta Ads), persuasive copywriting and conversion triggers.','Foco Total em Geração de Leads':'Lead Generation Focus','Carregamento Instantâneo':'Fast Loading','Integração com WhatsApp e CRM':'WhatsApp & CRM Integration',
+        'Sistemas & Plataformas Web':'Web Systems & Platforms','Desenvolvimento de aplicações sob medida: portais para clientes, sistemas de agendamento, dashboards administrativos e automações.':'Custom applications: customer portals, scheduling systems, admin dashboards and automations.','Arquitetura Escalável':'Scalable Architecture','Banco de Dados Seguro':'Secure Database','Autenticação e Perfis de Usuário':'Authentication & User Profiles',
+        'UI/UX & Redesign Premium':'Premium UI/UX & Redesign','Reformulação completa de sites antigos e desatualizados. Criamos interfaces sofisticadas alinhadas às últimas tendências internacionais.':'Complete redesigns for outdated websites, with sophisticated interfaces aligned with modern international trends.','Solicitar Redesign':'Request a Redesign','Otimização PageSpeed 100':'PageSpeed Optimization','Aceleramos sites lentos que perdem vendas. Limpeza de código, compressão de mídia de ponta e otimização de servidor.':'We accelerate slow websites that lose sales through clean code, advanced media compression and server optimization.','Acelerar Meu Site':'Speed Up My Site','Integrações Automáticas':'Automated Integrations','Conexão com WhatsApp Web, formulários inteligentes, RD Station, HubSpot, gateways de pagamento e ferramentas de email marketing.':'Connect your website to WhatsApp Web, smart forms, RD Station, HubSpot, payment gateways and email marketing tools.','Ver Integrações':'View Integrations',
+        'Processo Transparente':'Transparent Process','Como criamos seu projeto em 4 passos simples':'How we build your project in 4 simple steps','Diagnóstico & Estratégia':'Discovery & Strategy','Entendemos seu público-alvo, metas comerciais e concorrentes para criar um mapa de arquitetura exclusivo.':'We understand your audience, business goals and competitors to create a unique project architecture.','Design Prototipado':'Prototyped Design','Desenhamos a interface visual em alta fidelidade. Você aprova as telas antes de escrevermos qualquer linha de código.':'We design the interface in high fidelity. You approve the screens before any code is written.','Desenvolvimento & SEO':'Development & SEO','Programação limpa, otimização de velocidade, implementação de segurança SSL e testes de responsividade em celulares.':'Clean development, speed optimization, SSL security and responsive testing across devices.','Lançamento & Suporte':'Launch & Support','Publicação do site no seu domínio corporativo e acompanhamento técnico contínuo para garantir estabilidade total.':'Launch on your corporate domain with ongoing technical support to ensure stability.',
+        'Ferramenta Interativa':'Interactive Tool','Simule o Investimento do Seu Projeto':'Estimate Your Project Investment','Selecione as opções desejadas abaixo e receba uma estimativa instantânea direto no seu WhatsApp.':'Choose your options below and receive an instant estimate directly on WhatsApp.','1. Qual o tipo de projeto você precisa?':'1. What type of project do you need?','Landing Page':'Landing Page','Página única focada em vendas de produto ou serviço.':'A single page focused on selling a product or service.','A partir de R$ 1.200':'Starting at R$ 1,200','Site Institucional':'Corporate Website','Múltiplas páginas corporativas completas para sua empresa.':'Multiple complete corporate pages for your company.','A partir de R$ 2.500':'Starting at R$ 2,500','Sistema Web / App':'Web System / App','Plataforma customizada com banco de dados e painel.':'Custom platform with database and admin panel.','A partir de R$ 4.500':'Starting at R$ 4,500','2. Recursos extras que você deseja incluir:':'2. Extra features you would like to include:','SEO Avançado para Google':'Advanced Google SEO','Integração WhatsApp Direta':'Direct WhatsApp Integration','Design 100% Exclusivo':'100% Exclusive Design','Garantia PageSpeed 95+':'95+ PageSpeed Target','Investimento Estimado:':'Estimated Investment:','Enviar Proposta no WhatsApp':'Send Proposal on WhatsApp',
+        'Cases de Sucesso':'Featured Projects','Nossos Projetos em Destaque':'Our Featured Projects','Cada projeto é desenvolvido com identidade visual única, performance extrema e foco absoluto em conversão.':'Every project is developed with a unique visual identity, strong performance and a clear focus on conversion.','0.4s Loading':'0.4s Loading','PLATAFORMA SAAS':'SAAS PLATFORM','DASHBOARD ADMIN':'ADMIN DASHBOARD','FinTech Analytics & Dashboard':'FinTech Analytics & Dashboard','Interface minimalista para gestão financeira em tempo real com relatórios interativos e alto desempenho em dados.':'Minimalist interface for real-time financial management with interactive reports and high data performance.','Tech Stack: HTML5 / Tailwind / JS':'Tech Stack: HTML5 / Tailwind / JS','Ver Detalhes':'View Details','+210% em Conversão':'+210% Conversion','SITE INSTITUCIONAL':'CORPORATE WEBSITE','RENOVADO':'REDESIGNED','Portal Corporativo Global':'Global Corporate Portal','Redesign estratégico focado em posicionar a empresa como autoridade máxima no setor corporativo.':'Strategic redesign focused on positioning the company as a top authority in its corporate sector.','Tech Stack: SEO Premium / UI UX':'Tech Stack: Premium SEO / UI UX',
+        'Por Que a Vision Design?':'Why Vision Design?','A diferença entre um site comum e uma máquina de vendas':'The difference between an ordinary website and a sales machine','Outras Agências & Criadores Genéricos':'Other Agencies & Generic Creators','Usam construtores lentos':'They use slow website builders','que travam em celulares e perdem clientes.':'that struggle on mobile and lose customers.','Mensalidades abusivas':'High monthly fees','e presas a plataformas de terceiros.':'and lock you into third-party platforms.','Templates copiados':'Copied templates','que não transmitem autoridade de marca.':'that fail to communicate brand authority.','Suporte demorado':'Slow support','através de chamados engessados.':'through rigid ticket systems.','Padrão de Excelência Vision Design':'Vision Design Standard of Excellence','Código 100% puro e otimizado:':'100% clean, optimized code:','carregamento em menos de 1 segundo.':'loading in under one second.','O site é 100% seu:':'The website is 100% yours:','sem mensalidades ocultas ou taxas recorrentes obrigatórias.':'no hidden monthly fees or mandatory recurring charges.','Design Exclusivo UI/UX:':'Exclusive UI/UX Design:','sob medida para a conversão do seu nicho.':'tailored to your niche and conversion goals.','Atendimento direto via WhatsApp:':'Direct support via WhatsApp:','rápido, prático e personalizado.':'fast, practical and personalized.',
+        'Quem faz acontecer':'The People Behind It','Nossa':'Our','Equipe':'Team','Uma equipe enxuta, multidisciplinar e focada em transformar estratégia, design e tecnologia em experiências digitais de alto nível.':'A lean, multidisciplinary team focused on turning strategy, design and technology into high-level digital experiences.','Henry':'Henry','Design & Desenvolvimento':'Design & Development','Atua na criação visual, interfaces e desenvolvimento de experiências digitais com foco em identidade e usabilidade.':'Works on visual creation, interfaces and digital experiences focused on identity and usability.','João Roberto':'João Roberto','Sistemas & Web':'Systems & Web','Focado em desenvolvimento web, estrutura de sistemas e soluções funcionais para transformar ideias em produtos digitais.':'Focused on web development, system architecture and functional solutions that turn ideas into digital products.','Nicolas':'Nicolas','ADM & Financeiro':'Administration & Finance','Cuida da organização, gestão e planejamento financeiro para manter cada projeto sustentável e bem estruturado.':'Handles organization, management and financial planning to keep every project sustainable and well structured.',
+        'Aprovação Garantida':'Client Feedback','O que nossos parceiros dizem':'What Our Partners Say','Diretor de Operações':'Operations Director','CMO & Growth Lead':'CMO & Growth Lead','Fundador de Startup':'Startup Founder',
+        'Tire Suas Dúvidas':'Get Your Questions Answered','Perguntas Frequentes':'Frequently Asked Questions','Qual o prazo de entrega de um projeto?':'How long does a project take?','Landing pages são entregues em média entre 5 a 10 dias úteis. Sites institucionais completos levam de 10 a 20 dias úteis, dependendo do volume de conteúdo.':'Landing pages are usually delivered within 5 to 10 business days. Complete corporate websites take around 10 to 20 business days, depending on the amount of content.','O site é otimizado para celulares?':'Is the website optimized for mobile?','Com certeza! Todos os nossos projetos são desenvolvidos sob a filosofia Mobile-First, garantindo carregamento rápido e usabilidade perfeita em smartphones e tablets.':'Absolutely! All our projects follow a Mobile-First approach, ensuring fast loading and an excellent experience on smartphones and tablets.','Terei que pagar mensalidade?':'Will I have to pay a monthly fee?','Não! A Vision Design não cobra taxas mensais de uso. Você será o único proprietário do seu código e arcará apenas com a sua hospedagem e domínio (.com.br).':'No! Vision Design does not charge monthly usage fees. You own your code and only pay for your hosting and domain.','Como funciona o pagamento?':'How does payment work?','Trabalhamos com entrada no início do projeto e o restante após a aprovação final do site antes do lançamento oficial. Facilitamos no Pix e cartão de crédito.':'We work with an upfront payment at the start and the remainder after final approval before launch. We support Pix and credit card.',
+        'Vagas Limitadas Para Este Mês':'Limited Spots This Month','Pronto para transformar sua presença digital em uma':'Ready to turn your digital presence into a','máquina de vendas?':'sales machine?','Fale diretamente com nossa equipe no WhatsApp, tire suas dúvidas e receba um orçamento personalizado sem compromisso.':'Talk directly to our team on WhatsApp, ask your questions and receive a personalized quote with no obligation.','Falar com a Vision Design no WhatsApp':'Talk to Vision Design on WhatsApp','© 2026 Vision Design. Todos os direitos reservados.':'© 2026 Vision Design. All rights reserved.','Sistemas Operacionais & Prontos para Atendimento':'Systems Online & Ready to Help',
+        'Idioma / Language / Idioma':'Language / Idioma','Abrir Menu':'Open Menu','Voltar ao topo':'Back to top','Atendimento no WhatsApp':'WhatsApp support'
+      },
+      es: {}
+    };
+
+    translations.es = {
+      ...translations.en,
+      'Vision Design | Agência Web & Experiências Digitais de Alto Impacto':'Vision Design | Agencia Web y Experiencias Digitales de Alto Impacto',
+      'Serviços':'Servicios','Metodologia':'Metodología','Portfólio':'Portafolio','Diferenciais':'Diferenciales','Equipe':'Equipo','Simulador':'Simulador','Simulador de Projeto':'Simulador de Proyecto','Fazer Orçamento':'Solicitar Presupuesto','Perguntas Frequentes':'Preguntas Frecuentes','Fazer Orçamento no WhatsApp':'Solicitar Presupuesto por WhatsApp',
+      'Agência de Elite • Sites de Alta Conversão & Performance':'Agencia de Élite • Sitios de Alta Conversión y Rendimiento','Sua empresa merece um site que':'Tu empresa merece un sitio que','converte atenção em valor':'convierte atención en valor','com padrão de alto nível.':'con un estándar de primer nivel.','Desenvolvemos websites institucionais, landing pages estratégicas e sistemas sob medida com design exclusivo, velocidade máxima e foco total em transformar acessos em novos clientes.':'Desarrollamos sitios corporativos, landing pages estratégicas y sistemas a medida con diseño exclusivo, máxima velocidad y un enfoque total en convertir visitas en nuevos clientes.','Iniciar Projeto no WhatsApp':'Iniciar Proyecto por WhatsApp','Conhecer Projetos':'Ver Nuestros Proyectos','Vision Design • Web & Experiências Digitais':'Vision Design • Web y Experiencias Digitales','Projeto sob medida':'Proyectos a medida','Código próprio':'Código propio','Desenvolvimento sob medida e sem dependência de templates genéricos.':'Desarrollo a medida sin depender de plantillas genéricas.','Design exclusivo':'Diseño exclusivo','Interfaces pensadas para a identidade e os objetivos do seu negócio.':'Interfaces diseñadas según la identidad y los objetivos de tu negocio.','Performance':'Rendimiento','Arquitetura enxuta, responsiva e preparada para uma experiência rápida.':'Arquitectura ligera, responsive y preparada para una experiencia rápida.','Atendimento direto':'Atención directa','Contato simples com a equipe para alinhar dúvidas, escopo e próximos passos.':'Contacto directo con el equipo para alinear dudas, alcance y próximos pasos.',
+      'Soluções Especializadas':'Soluciones Especializadas','Engenharia Web & Design Estratégico':'Ingeniería Web y Diseño Estratégico','Tudo o que sua empresa precisa para se destacar no ambiente digital e dominar o seu nicho.':'Todo lo que tu empresa necesita para destacar en el entorno digital y liderar su nicho.','Criação de Sites Institucionais':'Creación de Sitios Corporativos','Plataformas corporativas modernas, projetadas com autoridade de marca, navegação intuitiva e otimização total para SEO orgânico no Google.':'Plataformas corporativas modernas diseñadas para autoridad de marca, navegación intuitiva y una sólida optimización SEO orgánica en Google.','SEO On-Page Estruturado':'SEO On-Page Estructurado','Painel de Gestão Fácil':'Panel de Gestión Fácil','Domínio & Hospedagem Próprios':'Dominio y Hosting Propios','Solicitar Proposta':'Solicitar Propuesta','Landing Pages de Alta Conversão':'Landing Pages de Alta Conversión','Páginas de vendas diretas focadas em campanhas de tráfego pago (Google Ads e Meta Ads). Copywriting persuasivo e gatilhos mentais.':'Páginas de venta directas enfocadas en campañas de tráfico pago (Google Ads y Meta Ads), copywriting persuasivo y disparadores de conversión.','Foco Total em Geração de Leads':'Enfoque Total en Generación de Leads','Carregamento Instantâneo':'Carga Rápida','Integração com WhatsApp e CRM':'Integración con WhatsApp y CRM','Sistemas & Plataformas Web':'Sistemas y Plataformas Web','Desenvolvimento de aplicações sob medida: portais para clientes, sistemas de agendamento, dashboards administrativos e automações.':'Desarrollo de aplicaciones a medida: portales de clientes, sistemas de reservas, paneles administrativos y automatizaciones.','Arquitetura Escalável':'Arquitectura Escalable','Banco de Dados Seguro':'Base de Datos Segura','Autenticação e Perfis de Usuário':'Autenticación y Perfiles de Usuario','UI/UX & Redesign Premium':'UI/UX y Rediseño Premium','Reformulação completa de sites antigos e desatualizados. Criamos interfaces sofisticadas alinhadas às últimas tendências internacionais.':'Rediseños completos de sitios antiguos y desactualizados, con interfaces sofisticadas alineadas con las últimas tendencias internacionales.','Solicitar Redesign':'Solicitar Rediseño','Otimização PageSpeed 100':'Optimización PageSpeed','Aceleramos sites lentos que perdem vendas. Limpeza de código, compressão de mídia de ponta e otimização de servidor.':'Aceleramos sitios lentos que pierden ventas mediante código limpio, compresión avanzada de medios y optimización del servidor.','Acelerar Meu Site':'Acelerar Mi Sitio','Integrações Automáticas':'Integraciones Automáticas','Conexão com WhatsApp Web, formulários inteligentes, RD Station, HubSpot, gateways de pagamento e ferramentas de email marketing.':'Conecta tu sitio con WhatsApp Web, formularios inteligentes, RD Station, HubSpot, pasarelas de pago y herramientas de email marketing.','Ver Integrações':'Ver Integraciones',
+      'Processo Transparente':'Proceso Transparente','Como criamos seu projeto em 4 passos simples':'Cómo creamos tu proyecto en 4 pasos simples','Diagnóstico & Estratégia':'Diagnóstico y Estrategia','Entendemos seu público-alvo, metas comerciais e concorrentes para criar um mapa de arquitetura exclusivo.':'Entendemos a tu público, objetivos comerciales y competidores para crear una arquitectura exclusiva.','Design Prototipado':'Diseño Prototipado','Desenhamos a interface visual em alta fidelidade. Você aprova as telas antes de escrevermos qualquer linha de código.':'Diseñamos la interfaz visual en alta fidelidad. Apruebas las pantallas antes de escribir una sola línea de código.','Desenvolvimento & SEO':'Desarrollo y SEO','Programação limpa, otimização de velocidade, implementação de segurança SSL e testes de responsividade em celulares.':'Programación limpia, optimización de velocidad, seguridad SSL y pruebas responsive en dispositivos móviles.','Lançamento & Suporte':'Lanzamiento y Soporte','Publicação do site no seu domínio corporativo e acompanhamento técnico contínuo para garantir estabilidade total.':'Publicación del sitio en tu dominio corporativo y soporte técnico continuo para garantizar estabilidad total.',
+      'Ferramenta Interativa':'Herramienta Interactiva','Simule o Investimento do Seu Projeto':'Simula la Inversión de Tu Proyecto','Selecione as opções desejadas abaixo e receba uma estimativa instantânea direto no seu WhatsApp.':'Selecciona las opciones que deseas y recibe una estimación instantánea directamente por WhatsApp.','1. Qual o tipo de projeto você precisa?':'1. ¿Qué tipo de proyecto necesitas?','Página única focada em vendas de produto ou serviço.':'Página única enfocada en vender un producto o servicio.','A partir de R$ 1.200':'Desde R$ 1.200','Site Institucional':'Sitio Corporativo','Múltiplas páginas corporativas completas para sua empresa.':'Múltiples páginas corporativas completas para tu empresa.','A partir de R$ 2.500':'Desde R$ 2.500','Sistema Web / App':'Sistema Web / App','Plataforma customizada com banco de dados e painel.':'Plataforma personalizada con base de datos y panel.','A partir de R$ 4.500':'Desde R$ 4.500','2. Recursos extras que você deseja incluir:':'2. Recursos adicionales que deseas incluir:','SEO Avançado para Google':'SEO Avanzado para Google','Integração WhatsApp Direta':'Integración Directa con WhatsApp','Design 100% Exclusivo':'Diseño 100% Exclusivo','Garantia PageSpeed 95+':'Objetivo PageSpeed 95+','Investimento Estimado:':'Inversión Estimada:','Enviar Proposta no WhatsApp':'Enviar Propuesta por WhatsApp',
+      'Cases de Sucesso':'Proyectos Destacados','Nossos Projetos em Destaque':'Nuestros Proyectos Destacados','Cada projeto é desenvolvido com identidade visual única, performance extrema e foco absoluto em conversão.':'Cada proyecto se desarrolla con identidad visual única, alto rendimiento y foco absoluto en conversión.','PLATAFORMA SAAS':'PLATAFORMA SAAS','DASHBOARD ADMIN':'DASHBOARD ADMIN','Interface minimalista para gestão financeira em tempo real com relatórios interativos e alto desempenho em dados.':'Interfaz minimalista para gestión financiera en tiempo real con informes interactivos y alto rendimiento de datos.','Ver Detalhes':'Ver Detalles','+210% em Conversão':'+210% en Conversión','SITE INSTITUCIONAL':'SITIO CORPORATIVO','RENOVADO':'REDISEÑADO','Portal Corporativo Global':'Portal Corporativo Global','Redesign estratégico focado em posicionar a empresa como autoridade máxima no setor corporativo.':'Rediseño estratégico enfocado en posicionar a empresa como máxima autoridad en el sector corporativo.',
+      'Por Que a Vision Design?':'¿Por Qué Vision Design?','A diferença entre um site comum e uma máquina de vendas':'La diferencia entre un sitio común y una máquina de ventas','Outras Agências & Criadores Genéricos':'Otras Agencias y Creadores Genéricos','Usam construtores lentos':'Usan constructores lentos','que travam em celulares e perdem clientes.':'que se bloquean en móviles y hacen perder clientes.','Mensalidades abusivas':'Mensualidades abusivas','e presas a plataformas de terceiros.':'y te atan a plataformas de terceros.','Templates copiados':'Plantillas copiadas','que não transmitem autoridade de marca.':'que no transmiten autoridad de marca.','Suporte demorado':'Soporte lento','através de chamados engessados.':'mediante tickets rígidos.','Padrão de Excelência Vision Design':'Estándar de Excelencia Vision Design','Código 100% puro e otimizado:':'Código 100% limpio y optimizado:','carregamento em menos de 1 segundo.':'carga en menos de un segundo.','O site é 100% seu:':'El sitio es 100% tuyo:','sem mensalidades ocultas ou taxas recorrentes obrigatórias.':'sin mensualidades ocultas ni cargos recurrentes obligatorios.','Design Exclusivo UI/UX:':'Diseño UI/UX Exclusivo:','sob medida para a conversão do seu nicho.':'hecho a medida para la conversión de tu nicho.','Atendimento direto via WhatsApp:':'Atención directa por WhatsApp:','rápido, prático e personalizado.':'rápida, práctica y personalizada.',
+      'Quem faz acontecer':'Quién lo hace posible','Nossa':'Nuestro','Equipe':'Equipo','Uma equipe enxuta, multidisciplinar e focada em transformar estratégia, design e tecnologia em experiências digitais de alto nível.':'Un equipo ágil y multidisciplinario enfocado en transformar estrategia, diseño y tecnología en experiencias digitales de alto nivel.','Design & Desenvolvimento':'Diseño y Desarrollo','Atua na criação visual, interfaces e desenvolvimento de experiências digitais com foco em identidade e usabilidade.':'Trabaja en creación visual, interfaces y experiencias digitales con foco en identidad y usabilidad.','Sistemas & Web':'Sistemas y Web','Focado em desenvolvimento web, estrutura de sistemas e soluções funcionais para transformar ideias em produtos digitais.':'Enfocado en desarrollo web, arquitectura de sistemas y soluciones funcionales para convertir ideas en productos digitales.','ADM & Financeiro':'Administración y Finanzas','Cuida da organização, gestão e planejamento financeiro para manter cada projeto sustentável e bem estruturado.':'Se encarga de la organización, gestión y planificación financiera para mantener cada proyecto sostenible y bien estructurado.',
+      'Aprovação Garantida':'Opiniones de Clientes','O que nossos parceiros dizem':'Lo que dicen nuestros clientes','Diretor de Operações':'Director de Operaciones','Fundador de Startup':'Fundador de Startup','Tire Suas Dúvidas':'Resuelve tus Dudas','Qual o prazo de entrega de um projeto?':'¿Cuánto tarda un proyecto?','Landing pages são entregues em média entre 5 a 10 dias úteis. Sites institucionais completos levam de 10 a 20 dias úteis, dependendo do volume de conteúdo.':'Las landing pages suelen entregarse en 5 a 10 días hábiles. Los sitios corporativos completos tardan entre 10 y 20 días hábiles, según el volumen de contenido.','O site é otimizado para celulares?':'¿El sitio está optimizado para móviles?','Com certeza! Todos os nossos projetos são desenvolvidos sob a filosofia Mobile-First, garantindo carregamento rápido e usabilidade perfeita em smartphones e tablets.':'¡Por supuesto! Todos nuestros proyectos siguen un enfoque Mobile-First para ofrecer carga rápida y una excelente experiencia en smartphones y tablets.','Terei que pagar mensalidade?':'¿Tendré que pagar una mensualidad?','Não! A Vision Design não cobra taxas mensais de uso. Você será o único proprietário do seu código e arcará apenas com a sua hospedagem e domínio (.com.br).':'¡No! Vision Design no cobra cuotas mensuales de uso. Eres propietario de tu código y solo pagas tu hosting y dominio.','Como funciona o pagamento?':'¿Cómo funciona el pago?','Trabalhamos com entrada no início do projeto e o restante após a aprovação final do site antes do lançamento oficial. Facilitamos no Pix e cartão de crédito.':'Trabajamos con un anticipo al inicio y el resto después de la aprobación final antes del lanzamiento. Aceptamos Pix y tarjeta de crédito.',
+      'Vagas Limitadas Para Este Mês':'Cupos Limitados Este Mes','Pronto para transformar sua presença digital em uma':'¿Listo para convertir tu presencia digital en una','máquina de vendas?':'máquina de ventas?','Fale diretamente com nossa equipe no WhatsApp, tire suas dúvidas e receba um orçamento personalizado sem compromisso.':'Habla directamente con nuestro equipo por WhatsApp, resuelve tus dudas y recibe un presupuesto personalizado sin compromiso.','Falar com a Vision Design no WhatsApp':'Hablar con Vision Design por WhatsApp','© 2026 Vision Design. Todos os direitos reservados.':'© 2026 Vision Design. Todos los derechos reservados.','Sistemas Operacionais & Prontos para Atendimento':'Sistemas Activos y Listos para Atender','Idioma / Language / Idioma':'Idioma / Language','Abrir Menu':'Abrir Menú','Voltar ao topo':'Volver arriba','Atendimento no WhatsApp':'Atención por WhatsApp'
+    };
+
+    const languageMeta = { pt: { label: 'PT', html: 'pt-BR', dir: 'ltr' }, en: { label: 'EN', html: 'en', dir: 'ltr' }, es: { label: 'ES', html: 'es', dir: 'ltr' } };
+    const originalTextNodes = new Map();
+    const originalAttrs = new Map();
+    const translatableAttributes = ['title','aria-label','alt','placeholder'];
+
+    function collectOriginals(root=document.body) {
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      let node;
+      while (node = walker.nextNode()) {
+        const value = node.nodeValue;
+        if (value && value.trim()) originalTextNodes.set(node, value);
+      }
+      document.querySelectorAll('*').forEach(el => {
+        translatableAttributes.forEach(attr => {
+          if (el.hasAttribute(attr)) originalAttrs.set(`${attr}::${Array.from(el.parentNode?.children || []).indexOf(el)}::${el.tagName}`, { el, attr, value: el.getAttribute(attr) });
+        });
+      });
+    }
+
+    function translateText(text, lang) {
+      const trimmed = text.trim();
+      if (!trimmed) return text;
+      const dict = lang === 'pt' ? null : translations[lang];
+      if (!dict || !Object.prototype.hasOwnProperty.call(dict, trimmed)) return text;
+      const translated = dict[trimmed];
+      return text.replace(trimmed, translated);
+    }
+
+    function updateStaticText(lang) {
+      originalTextNodes.forEach((original, node) => {
+        if (!node.isConnected) return;
+        node.nodeValue = translateText(original, lang);
+      });
+
+      document.title = lang === 'pt' ? 'Vision Design | Agência Web & Experiências Digitais de Alto Impacto' : translations[lang]['Vision Design | Agência Web & Experiências Digitais de Alto Impacto'];
+      document.documentElement.lang = languageMeta[lang].html;
+
+      // Metatags
+      const desc = document.querySelector('meta[name="description"]');
+      const keywords = document.querySelector('meta[name="keywords"]');
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (lang === 'pt') {
+        desc.content = 'Desenvolvimento de sites institucionais de alta performance, landing pages com máxima conversão e sistemas sob medida sem construtores pesados.';
+        keywords.content = 'criação de sites, landing page de alta conversão, agência de desenvolvimento web, ui ux design, vision design, otimização pagespeed';
+        ogTitle.content = 'Vision Design | Experiências Digitais de Elite';
+        ogDesc.content = 'Criamos sites ultrarrápidos, exclusivos e projetados estrategicamente para converter visitantes em clientes.';
+      } else if (lang === 'en') {
+        desc.content = 'High-performance corporate websites, strategic landing pages and custom systems without heavy website builders.';
+        keywords.content = 'website development, high-converting landing page, web agency, ui ux design, vision design, pagespeed optimization';
+        ogTitle.content = 'Vision Design | Elite Digital Experiences';
+        ogDesc.content = 'We create fast, exclusive websites strategically designed to turn visitors into customers.';
+      } else {
+        desc.content = 'Sitios corporativos de alto rendimiento, landing pages estratégicas y sistemas a medida sin constructores pesados.';
+        keywords.content = 'creación de sitios, landing page de alta conversión, agencia web, ui ux design, vision design, optimización pagespeed';
+        ogTitle.content = 'Vision Design | Experiencias Digitales de Élite';
+        ogDesc.content = 'Creamos sitios rápidos, exclusivos y diseñados estratégicamente para convertir visitantes en clientes.';
+      }
+
+      document.querySelectorAll('#current-language-desktop, #current-language-mobile').forEach(el => el.textContent = languageMeta[lang].label);
+    }
+
+    function updateWhatsAppLinks(lang) {
+      const phone = '5519993504451';
+      const messages = {
+        pt: 'Olá! Vim pelo site da Vision Design e quero solicitar um orçamento para o meu projeto.',
+        en: 'Hello! I came through the Vision Design website and would like to request a quote for my project.',
+        es: '¡Hola! Llegué por el sitio de Vision Design y quisiera solicitar un presupuesto para mi proyecto.'
+      };
+      const baseLinks = document.querySelectorAll(`a[href^="https://wa.me/${phone}"]`);
+      baseLinks.forEach(link => {
+        const url = new URL(link.href);
+        const original = decodeURIComponent(url.searchParams.get('text') || '');
+        let message = messages[lang];
+        if (original.toLowerCase().includes('atendimento')) {
+          message = lang === 'pt' ? 'Olá! Vim pelo site da Vision Design e gostaria de atendimento.' : lang === 'en' ? 'Hello! I came through the Vision Design website and would like assistance.' : '¡Hola! Llegué por el sitio de Vision Design y quisiera atención.';
+        }
+        link.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      });
+    }
+
+    function setLanguage(lang) {
+      localStorage.setItem('visionLanguage', lang);
+      updateStaticText(lang);
+      updateWhatsAppLinks(lang);
+      if (typeof calculateTotal === 'function') calculateTotal();
+      document.querySelectorAll('[data-lang]').forEach(btn => btn.classList.toggle('ring-1', btn.dataset.lang === lang));
+      document.querySelectorAll('[id^="language-menu-"]').forEach(menu => menu.classList.add('hidden'));
+      document.querySelectorAll('[id^="language-toggle-"]').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+    }
+
+    function toggleLanguageMenu(id) {
+      const menu = document.getElementById(id);
+      const toggle = document.getElementById(id.replace('menu','toggle'));
+      const willOpen = menu.classList.contains('hidden');
+      document.querySelectorAll('[id^="language-menu-"]').forEach(m => m.classList.add('hidden'));
+      document.querySelectorAll('[id^="language-toggle-"]').forEach(b => b.setAttribute('aria-expanded','false'));
+      if (willOpen) {
+        menu.classList.remove('hidden');
+        toggle.setAttribute('aria-expanded','true');
+      }
+    }
+
+    collectOriginals();
+    const savedLanguage = localStorage.getItem('visionLanguage') || 'pt';
+    setLanguage(savedLanguage);
+
+    document.getElementById('language-toggle-desktop')?.addEventListener('click', () => toggleLanguageMenu('language-menu-desktop'));
+    document.getElementById('language-toggle-mobile')?.addEventListener('click', () => toggleLanguageMenu('language-menu-mobile'));
+    document.querySelectorAll('.language-option').forEach(option => {
+      option.addEventListener('click', () => setLanguage(option.dataset.lang));
+    });
+    document.addEventListener('click', event => {
+      if (!event.target.closest('#language-switcher-desktop') && !event.target.closest('#language-switcher-mobile')) {
+        document.querySelectorAll('[id^="language-menu-"]').forEach(menu => menu.classList.add('hidden'));
+        document.querySelectorAll('[id^="language-toggle-"]').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+      }
+    });
+  </script>
+
+  <!-- SCRIPTS JAVASCRIPT NATIVO -->
+  <script>
+    // 1. Lógica do Menu Mobile
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-icon');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (menu.classList.contains('hidden')) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      } else {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      }
+    });
+
+    // Fechar menu mobile ao clicar em um link
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      });
+    });
+
+    // 2. Lógica do FAQ (Accordion Sanfona)
+    const faqBtns = document.querySelectorAll('.faq-btn');
+    faqBtns.forEach(faqBtn => {
+      faqBtn.addEventListener('click', () => {
+        const content = faqBtn.nextElementSibling;
+        const arrow = faqBtn.querySelector('i');
+        
+        // Fecha outros itens abertos
+        document.querySelectorAll('.faq-content').forEach(item => {
+          if (item !== content) {
+            item.classList.add('hidden');
+            if(item.previousElementSibling.querySelector('i')) {
+              item.previousElementSibling.querySelector('i').classList.remove('rotate-180');
+            }
+          }
+        });
+
+        content.classList.toggle('hidden');
+        arrow.classList.toggle('rotate-180');
+      });
+    });
+
+    // 3. Calculadora / Simulador de Investimento
+    const projectRadios = document.querySelectorAll('input[name="project_type"]');
+    const addonCheckboxes = document.querySelectorAll('.calc-addon input[type="checkbox"]');
+    const totalPriceEl = document.getElementById('total-price');
+    const sendSimulationBtn = document.getElementById('send-simulation-btn');
+
+    function calculateTotal() {
+      const lang = localStorage.getItem('visionLanguage') || 'pt';
+      let total = 0;
+      let selectedType = 'Não informado';
+
+      projectRadios.forEach(radio => {
+        if (radio.checked) {
+          total += Number(radio.dataset.price || 0);
+          selectedType = radio.value;
+        }
+      });
+
+      const selectedAddons = [];
+      addonCheckboxes.forEach(cb => {
+        if (cb.checked) {
+          total += Number(cb.dataset.price || 0);
+          selectedAddons.push(cb.dataset.name);
+        }
+      });
+
+      const currencyLocale = lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : 'pt-BR';
+      totalPriceEl.textContent = `R$ ${total.toLocaleString(currencyLocale)}`;
+
+      const phone = '5519993504451';
+      const labels = {
+        pt: { intro: 'Olá! Simulei um orçamento pelo site da Vision Design:', type: 'Tipo de projeto', extras: 'Recursos extras', none: 'Nenhum', estimate: 'Estimativa inicial', outro: 'Gostaria de conversar sobre os detalhes do projeto.' },
+        en: { intro: 'Hello! I simulated a quote through the Vision Design website:', type: 'Project type', extras: 'Extra features', none: 'None', estimate: 'Initial estimate', outro: 'I would like to discuss the project details.' },
+        es: { intro: '¡Hola! Simulé un presupuesto en el sitio de Vision Design:', type: 'Tipo de proyecto', extras: 'Recursos adicionales', none: 'Ninguno', estimate: 'Estimación inicial', outro: 'Me gustaría hablar sobre los detalles del proyecto.' }
+      }[lang];
+      const lines = [
+        labels.intro,
+        '',
+        `${labels.type}: ${selectedType}`,
+        selectedAddons.length ? `${labels.extras}: ${selectedAddons.join(', ')}` : `${labels.extras}: ${labels.none}`,
+        `${labels.estimate}: R$ ${total.toLocaleString(currencyLocale)}`,
+        '',
+        labels.outro
+      ];
+
+      sendSimulationBtn.onclick = () => {
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(lines.join('\n'))}`;
+        window.open(url, '_blank', 'noopener');
+      };
+    }
+
+    projectRadios.forEach(r => r.addEventListener('change', calculateTotal));
+    addonCheckboxes.forEach(c => c.addEventListener('change', calculateTotal));
+    calculateTotal();
+
+    // 4. Botão Voltar ao Topo
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.remove('hidden');
+      } else {
+        backToTopBtn.classList.add('hidden');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 5. Microinterações e animações de entrada
+    const header = document.querySelector('header');
+    const revealItems = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach(item => observer.observe(item));
+
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('nav-scrolled', window.scrollY > 24);
+    }, { passive: true });
+  </script>
+</body>
+</html>
